@@ -18,13 +18,13 @@ proxysql_password = "root"
 
 import sys
 import json
-import MySQLdb
+import pymysql
 import itertools
 
 class proxysql:
 	def __init__(self, proxysql_host, proxysql_port, proxysql_user, proxysql_password):
-		self.__connection = MySQLdb.connect(host=proxysql_host, port=proxysql_port, user=proxysql_user, passwd=proxysql_password, db="main")
-		self.__cursor = self.__connection.cursor()
+        self.__connection = pymysql.connect(host=proxysql_host, port=proxysql_port, user=proxysql_user, password=proxysql_password, database="main")
+        self.__cursor = self.__connection.cursor()
 	
 	def __del__(self):
 		self.__connection.close()
